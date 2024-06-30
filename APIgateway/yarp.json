@@ -1,0 +1,51 @@
+{
+  "Yarp": {
+    "Routes": {
+      "customers-route": {
+        "ClusterId": "customers-cluster",
+        "Match": {
+          "Path": "/customer/{**catch-all}"
+        },
+        "Transforms": [ { "PathPattern": "{**catch-all}" } ]
+      },
+      "suppliers-route": {
+        "ClusterId": "suppliers-cluster",
+        "Match": {
+          "Path": "/supplier/{**catch-all}"
+        },
+        "Transforms": [ { "PathPattern": "{**catch-all}" } ]
+      },
+      "products-route": {
+        "ClusterId": "products-cluster",
+        "Match": {
+          "Path": "/product/{**catch-all}"
+        },
+        "Transforms": [ { "PathPattern": "{**catch-all}" } ]
+      }
+    },
+    "Clusters": {
+      "customers-cluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "http://localhost:5053/api"
+          }
+        }
+      },
+      "suppliers-cluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "http://localhost:5151/api"
+          }
+        }
+      },
+      "products-cluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "http://localhost:5230/api"
+          }
+        }
+      }
+    }
+  }
+}
+
